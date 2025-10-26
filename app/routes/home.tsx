@@ -1,13 +1,13 @@
+import Splash from "~/components/splash";
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "RPG Session Notes App" },
+    { name: "description", content: "Welcome to RPG Session Notes!" },
   ];
 }
 
 export default function Home() {
-  return <Welcome />;
+  return <Splash />;
 }

@@ -8,19 +8,21 @@ import {
 } from "react-router";
 
 import type { Route } from "./+types/root";
+import "@radix-ui/themes/styles.css";
 import "./app.css";
+import { Theme } from "@radix-ui/themes";
 
 export const links: Route.LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
+  //   { rel: "preconnect", href: "https://fonts.googleapis.com" },
+  //   {
+  //     rel: "preconnect",
+  //     href: "https://fonts.gstatic.com",
+  //     crossOrigin: "anonymous",
+  //   },
+  //   {
+  //     rel: "stylesheet",
+  //     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+  //   },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -32,10 +34,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
+      <body
+        style={{
+          margin: 0,
+          padding: 0,
+        }} // Important! Radix theme adds margin/padding and introduces an unnecessary scrollbar on an empty page
+      >
+        <Theme
+          appearance="dark" // Default to dark mode
+          accentColor="sky"
+          panelBackground="solid"
+          radius="small"
+          scaling="90%"
+        >
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+        </Theme>
       </body>
     </html>
   );
